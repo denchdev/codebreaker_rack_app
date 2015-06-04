@@ -1,0 +1,7 @@
+--- !ruby/object:Codebreaker::Saver
+users:
+  Denis: !ruby/object:Codebreaker::User
+    name: Denis
+    score: 200
+    attempts_total: 0
+    attempts: []

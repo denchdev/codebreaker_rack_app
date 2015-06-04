@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEB page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/style.css" ttype="text/css">
+    <!--<link rel="stylesheet" href="/c/style.css" type="text/css">-->
+  </head>
+  <body>
+    <div id="container">
+      <div class="header">
+      <h1>CODEBREAKER</h1>
+      <p>Codebreaker is a logic game in which a code-breaker tries to break a secret code created by a code-maker. The code-maker, which will be played by the application we’re going to write, creates a secret code of four numbers between 1 and 6.</p>
+      <p>The code-breaker then gets some number of chances to break the code. In each turn, the code-breaker makes a guess of four numbers. The code-maker then marks the guess with up to four + and - signs.</p>
+      <p>A + indicates an exact match: one of the numbers in the guess is the same as one of the numbers in the secret code and in the same position.</p>
+      <p>A - indicates a number match: one of the numbers in the guess is the same as one of the numbers in the secret code but in a different position.</p><br/>
+      </div>
+
+      <div class="main">
+        <% if @game.nil? %>
+        <form method="post" action="/init">
+          <input name="user_name" type="text"/>
+          <input type="submit" value="reg"/>
+        </form>
+        <% else %>
+        <%= @game.user.name%> good luck)
+        <form method="post" action="/start">
+          <input type="submit" value="start">                
+        </form>
+        <p><%= @game.instance_variable_get(:@secret_code)%></p>
+        <form method="post" action="/check">
+          <input name="guess" type="text"/>
+          <input type="submit" value="check!"/>
+        </form>
+        <%if @result_ == "++++" %>
+        you win
+        
+        <%end%>
+        <h5>Statistics</h5>
+        <table>
+          <tr><%= @guess_%>
+        _+==>_
+        <%= @result_ %></tr>
+        </table>
+          
+        <table>
+        <tr>
+          <th>User_name</th>
+          <th>Scores</th>
+          <th>Total</th>
+          <th>Best</th>
+        </tr>
+        <% @game.instance_variable_get(:@saver).users do |user|%>
+        <tr><td>user.name</td></tr>
+        <tr><td>user.score</td></tr>
+        <tr><td>user.attempts_total</td></tr>
+        <tr><td>user.best_attempt</td></tr>
+        <% end %>
+        <tr>
+          <td>Ivan_vas</td>
+          <td>5</td>
+          <td>6</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>Casn_vas</td>
+          <td>5</td>
+          <td>6</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>Benn_vas</td>
+          <td>5</td>
+          <td>6</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>Gern_vas</td>
+          <td>5</td>
+          <td>6</td>
+          <td>6</td>
+        </tr>
+        </table>
+        <% end %>
+        
+      </div>
+      
+    </div>
+  </body>
+</html>
+

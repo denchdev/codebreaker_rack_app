@@ -17,17 +17,40 @@
       </div>
 
       <div class="main">
+        <% unless @game.nil? %>
+        <div class="left_panel">  
+          <table>
+            <tr>
+              <th>User name</th>
+              <th>Scores</th>
+              <th>Total</th>
+              <th>Best</th>
+            </tr>
+            <% @game.saver.read do |user| %>
+            <tr><td><% user.name %></td></tr>
+            <tr><td><% user.score %></td></tr>
+            <tr><td><% user.attempts_total %></td></tr>
+            <tr><td><% user.best_attempt %></td></tr>
+            <% end %>         
+          </table>
+        </div>
+        <% end %>
+      
+      
         <% if @game.nil? %>
         <form method="post" action="/init">
           <input name="user_name" type="text"/>
           <input type="submit" value="reg"/>
         </form>
         <% else %>
-        <%= @game.user.name%> good luck)
+        <h1><%= @game.user.name%> good luck)</h1>
+        <h3>score: <%= @game.user.score %></h3>
+       
         <form method="post" action="/start">
-          <input type="submit" value="start">                
+          <input type="submit" value="start" class="start_button">                
         </form>
-        <p><%= @game.instance_variable_get(:@secret_code)%></p>
+        <p><% @game.instance_variable_get(:@secret_code)%></p>
+        <h3>attemps: </h3>
         <form method="post" action="/check">
           <input name="guess" type="text"/>
           <input type="submit" value="check!"/>
@@ -35,55 +58,18 @@
         <%if @result_ == "++++" %>
         you win
         
-        <%end%>
+        <%end%>        
         <h5>Statistics</h5>
         <table>
-          <tr><%= @guess_%>
+          <tr><% @guess_%>
         _+==>_
-        <%= @result_ %></tr>
-        </table>
-          
-        <table>
-        <tr>
-          <th>User_name</th>
-          <th>Scores</th>
-          <th>Total</th>
-          <th>Best</th>
-        </tr>
-        <% @game.instance_variable_get(:@saver).users do |user|%>
-        <tr><td>user.name</td></tr>
-        <tr><td>user.score</td></tr>
-        <tr><td>user.attempts_total</td></tr>
-        <tr><td>user.best_attempt</td></tr>
-        <% end %>
-        <tr>
-          <td>Ivan_vas</td>
-          <td>5</td>
-          <td>6</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Casn_vas</td>
-          <td>5</td>
-          <td>6</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Benn_vas</td>
-          <td>5</td>
-          <td>6</td>
-          <td>6</td>
-        </tr>
-        <tr>
-          <td>Gern_vas</td>
-          <td>5</td>
-          <td>6</td>
-          <td>6</td>
-        </tr>
+        <% @result_ %></tr>
         </table>
         <% end %>
+        </div>       
         
-      </div>
+        
+      
       
     </div>
   </body>

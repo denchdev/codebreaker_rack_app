@@ -1,7 +1,7 @@
 body {
   background-color: #4B7399;
-  font-family: Verdana;
-  font-size: 40px;
+  font-family: Verdana; 
+  font-size: 20px; 
 }
 #container {
   width: 75%;
@@ -11,6 +11,36 @@ body {
   border: solid 1px black;
   margin-top: 20px;
 }
-a {
-  color: #0000FF;
+
+h1 {
+  
+}
+
+.left_panel {
+  width: 40%;
+  float: right;  
+  margin-top: 60px;
+  text-align: center;
+  table, td {
+    border: 1px solid #87c286;
+  }
+}
+
+.start_button {
+   height: 60px;
+   width: 300px;
+   background: linear-gradient(to bottom, #0bc408 0%,#09a206 100%);
+   color: #fff;
+   font-size: 46px;
+   text-shadow: 0 1px 0 #757575;
+   padding: 4px 0 5px 0;
+   margin: 0;
+   cursor: pointer;
+   border: 0;
+   border-top: 1px solid #87c286;
+   border-right: 1px solid #0e780c;
+   border-left: 1px solid #0e780c;
+   border-bottom: 1px solid #0e780c;
+   box-shadow: 0 -1px 0 #0e780c, 0 1px 0 #fff;
+   border-radius: 15px;
 }

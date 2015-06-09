@@ -1,7 +1,42 @@
 --- !ruby/object:Codebreaker::Saver
 users:
-  Denis: !ruby/object:Codebreaker::User
-    name: Denis
+  red: !ruby/object:Codebreaker::User
+    name: red
+    score: 200
+    attempts_total: 0
+    attempts: []
+--- !ruby/object:Codebreaker::Saver
+users:
+  bfz: !ruby/object:Codebreaker::User
+    name: bfz
+    score: 200
+    attempts_total: 0
+    attempts: []
+--- !ruby/object:Codebreaker::Saver
+users:
+  bfz: !ruby/object:Codebreaker::User
+    name: bfz
+    score: 200
+    attempts_total: 0
+    attempts: []
+--- !ruby/object:Codebreaker::Saver
+users:
+  deniska: !ruby/object:Codebreaker::User
+    name: deniska
+    score: 200
+    attempts_total: 0
+    attempts: []
+--- !ruby/object:Codebreaker::Saver
+users:
+  iren: !ruby/object:Codebreaker::User
+    name: iren
+    score: 200
+    attempts_total: 0
+    attempts: []
+--- !ruby/object:Codebreaker::Saver
+users:
+  iren: !ruby/object:Codebreaker::User
+    name: iren
     score: 200
     attempts_total: 0
     attempts: []

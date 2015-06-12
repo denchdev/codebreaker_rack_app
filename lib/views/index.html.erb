@@ -17,59 +17,83 @@
       </div>
 
       <div class="main">
-        <% unless @game.nil? %>
-        <div class="left_panel">  
-          <table>
-            <tr>
-              <th>User name</th>
-              <th>Scores</th>
-              <th>Total</th>
-              <th>Best</th>
-            </tr>
-            <% @game.saver.read do |user| %>
-            <tr><td><% user.name %></td></tr>
-            <tr><td><% user.score %></td></tr>
-            <tr><td><% user.attempts_total %></td></tr>
-            <tr><td><% user.best_attempt %></td></tr>
-            <% end %>         
-          </table>
-        </div>
-        <% end %>
-      
-      
+                    
         <% if @game.nil? %>
-        <form method="post" action="/init">
-          <input name="user_name" type="text"/>
-          <input type="submit" value="reg"/>
-        </form>
-        <% else %>
-        <h1><%= @game.user.name%> good luck)</h1>
-        <h3>score: <%= @game.user.score %></h3>
-       
-        <form method="post" action="/start">
-          <input type="submit" value="start" class="start_button">                
-        </form>
-        <p><% @game.instance_variable_get(:@secret_code)%></p>
-        <h3>attemps: </h3>
-        <form method="post" action="/check">
-          <input name="guess" type="text"/>
-          <input type="submit" value="check!"/>
-        </form>
-        <%if @result_ == "++++" %>
-        you win
+          <div class="start">
+            <form method="post" action="/init">
+              <input name="user_name" type="text"/>
+              <br>
+              <input type="submit" value="start"/>
+            </form>
+          </div> 
         
-        <%end%>        
-        <h5>Statistics</h5>
-        <table>
-          <tr><% @guess_%>
-        _+==>_
-        <% @result_ %></tr>
-        </table>
+        <% elsif !(@game.win? || @game.lose?) %>      
+        
+          <div class="left_panel">  
+            <table>
+              <tr>
+                <th>User name</th>
+                <th>Scores</th>
+                <th>Total</th>
+                <th>Best</th>
+              </tr>                        
+              <% @game.saver.users.each_value do |user| %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.score %></td>
+                <td><%= user.attempts_total %></td>
+                <td><%= user.best_attempt %></td>
+              </tr>
+              <% end %>         
+            </table>            
+          </div>
+          
+          <h1><%= @game.user.name%></h2>
+          <ul class="hr">            
+            <li>score: <%= @game.user.score %></li>
+            <li>attemps: <%= @game.attemp %></li>
+          </ul>       
+          
+          <!--<p><%= @game.instance_variable_get(:@secret_code)%></p>--> <!--это нужно удалить -->
+          
+          <form method="post" action="/check">
+            <input name="guess" type="text" pattern="[1-6]{4}"/>
+            <input type="submit" value="check!"/>
+          </form>           
+          
+          <form method="post" action="/hint">      
+            <br>
+            Hint: <%if @hint_ %>
+              <%= @hint_ %>   
+            <% else %>   
+             <input type="submit" value="hint"/>
+            <% end %>
+          </form>   
+               
+          <h5>Statistics</h5>
+          <table>          
+            <tr>
+              <td><%= @guess_%></td>                     
+              <td><%= @result_ %></td>
+            </tr>
+          </table>
+          <% else %>
+            <% if @game.win? %>
+              <h1>You win!</h1>                         
+            <% elsif  @game.lose? %>
+              <h1>You lose!</h1>
+            <% end %>
+              
+            Do you want play again?
+            <br>
+            <form method="post" action="/play_again">                 
+              <input type="submit" value="start"/>              
+            </form>
+            <form method="post" action="/begin_">                 
+              <input type="submit" value="no"/>              
+            </form>
         <% end %>
-        </div>       
-        
-        
-      
+        </div> 
       
     </div>
   </body>

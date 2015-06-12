@@ -7,9 +7,11 @@ class Codebreaker_rack
     @request = Rack::Request.new(env)
     case @request.path
     when "/" then Rack::Response.new(render("index.html.erb"))
-    when "/init" then init
-    when "/start" then start
+    when "/init" then init    
     when "/check" then check
+    when "/hint" then hint
+    when "/play_again" then play_again
+    when "/begin_" then begin_
     else Rack::Response.new("Not Found", 404)
     end
   end
@@ -17,14 +19,17 @@ class Codebreaker_rack
   def init
     Rack::Response.new do |response|
       @game = Codebreaker::Game.new(@request.params['user_name'])
+      @game.start
       response.redirect("/")
     end
   end
   
-  def start
+  def play_again
     Rack::Response.new do |response|
+      @hint_ = nil
+      @guess_ = nil
+      @result_ = nil
       @game.start
-      @game.save
       response.redirect("/")
     end
   end
@@ -32,10 +37,25 @@ class Codebreaker_rack
   def check
     Rack::Response.new do |response|
       @guess_ = @request.params['guess']
-      @result_ = @game.check_up @guess_
+      @result_ = @game.check_up @request.params['guess']
       response.redirect("/")
     end
   end
+  
+  def hint
+    Rack::Response.new do |response|      
+      @hint_ = @game.hint 0
+      response.redirect("/")
+    end
+  end
+  
+  def begin_
+    Rack::Response.new do |response|      
+      @game = nil
+      response.redirect("/")
+    end
+  end
+  
   
   def render(template)
     path = File.expand_path("../views/#{template}", __FILE__)

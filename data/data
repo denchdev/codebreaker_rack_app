@@ -1,42 +1,60 @@
---- !ruby/object:Codebreaker::Saver
-users:
-  red: !ruby/object:Codebreaker::User
-    name: red
-    score: 200
-    attempts_total: 0
-    attempts: []
---- !ruby/object:Codebreaker::Saver
-users:
-  bfz: !ruby/object:Codebreaker::User
-    name: bfz
-    score: 200
-    attempts_total: 0
-    attempts: []
---- !ruby/object:Codebreaker::Saver
-users:
-  bfz: !ruby/object:Codebreaker::User
-    name: bfz
-    score: 200
-    attempts_total: 0
-    attempts: []
---- !ruby/object:Codebreaker::Saver
-users:
-  deniska: !ruby/object:Codebreaker::User
-    name: deniska
-    score: 200
-    attempts_total: 0
-    attempts: []
---- !ruby/object:Codebreaker::Saver
-users:
-  iren: !ruby/object:Codebreaker::User
-    name: iren
-    score: 200
-    attempts_total: 0
-    attempts: []
---- !ruby/object:Codebreaker::Saver
-users:
-  iren: !ruby/object:Codebreaker::User
-    name: iren
-    score: 200
-    attempts_total: 0
-    attempts: []
+---
+denn: !ruby/object:Codebreaker::User
+  name: denn
+  score: 600
+  attempts_total: 4
+  attempts:
+  - 1
+  - 1
+  - 1
+  - 1
+ger: !ruby/object:Codebreaker::User
+  name: ger
+  score: 500
+  attempts_total: 18
+  attempts:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 7
+  - 7
+rack: !ruby/object:Codebreaker::User
+  name: rack
+  score: 400
+  attempts_total: 4
+  attempts:
+  - 2
+  - 2
+res: !ruby/object:Codebreaker::User
+  name: res
+  score: 600
+  attempts_total: 4
+  attempts:
+  - 1
+  - 1
+  - 1
+  - 1
+qwe: !ruby/object:Codebreaker::User
+  name: qwe
+  score: 800
+  attempts_total: 6
+  attempts:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+Ivan: !ruby/object:Codebreaker::User
+  name: Ivan
+  score: 200
+  attempts_total: 20
+  attempts: []
+qwerty: !ruby/object:Codebreaker::User
+  name: qwerty
+  score: 100
+  attempts_total: 36
+  attempts:
+  - 8
+  - 8

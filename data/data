@@ -58,3 +58,8 @@ qwerty: !ruby/object:Codebreaker::User
   attempts:
   - 8
   - 8
+den: !ruby/object:Codebreaker::User
+  name: den
+  score: 200
+  attempts_total: 40
+  attempts: []
